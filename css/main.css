@@ -1,241 +1,93 @@
-body {
-    font-family: 'Kalam', cursive;
-}
-
-
 /* =====================================================
    CONFIGURAÇÕES GERAIS
    ===================================================== */
 
-/*
-   Remove as margens e espaçamentos padrão
-   que o navegador coloca nos elementos.
-*/
 * {
     margin: 0;
     padding: 0;
-
-    /*
-       Faz com que padding e border não aumentem
-       o tamanho final dos elementos.
-    */
     box-sizing: border-box;
 }
 
-/*
-   Estilo geral da página.
-*/
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
-}
-
-
-/* =====================================================
-   BARRA DE NAVEGAÇÃO
-   ===================================================== */
-
-.navbar {
-
-    /*
-       Coloca os elementos lado a lado.
-    */
-    display: flex;
-
-    /*
-       Alinha os elementos verticalmente.
-    */
-    align-items: center;
-
-    /*
-       Espaça automaticamente:
-       logo | links | redes sociais
-    */
-    justify-content: space-between;
-
-    /*
-       Espaçamento interno da barra.
-    */
-    padding: 15px 40px;
-
-    /*
-       Cor vermelha da barra.
-    */
-    background-color: #d62828;
-}
-
-
-/* =====================================================
-   LOGO / NOME
-   ===================================================== */
-
-.logo {
-
-    /*
-       Tamanho do texto.
-    */
-    font-size: 24px;
-
-    /*
-       Texto em negrito.
-    */
-    font-weight: bold;
-
-    /*
-       Cor branca.
-    */
+    background-color: #070503;
     color: white;
 }
 
 
 /* =====================================================
-   LINKS DO MENU
+   BANNER
    ===================================================== */
 
-.nav-links {
-
-    /*
-       Remove as bolinhas da lista.
-    */
-    list-style: none;
-
-    /*
-       Coloca os links lado a lado.
-    */
-    display: flex;
-
-    /*
-       Espaço entre os links.
-    */
-    gap: 30px;
-}
-
-
-/*
-   Estilo dos links.
-*/
-.nav-links a {
-
-    /*
-       Remove o sublinhado.
-    */
-    text-decoration: none;
-
-    /*
-       Texto branco.
-    */
-    color: white;
-
-    /*
-       Tamanho do texto.
-    */
-    font-size: 16px;
-
-    /*
-       Pequena animação quando o mouse passa.
-    */
-    transition: 0.3s;
-}
-
-
-/*
-   Quando o mouse passa por cima do link.
-*/
-.nav-links a:hover {
-
-    /*
-       Torna o texto um pouco mais claro.
-    */
-    color: #ffd6d6;
-}
-
-
-/* =====================================================
-   REDES SOCIAIS
-   ===================================================== */
-
-.social-links {
-
-    /*
-       Coloca os ícones lado a lado.
-    */
-    display: flex;
-
-    /*
-       Espaço entre os ícones.
-    */
-    gap: 15px;
-}
-
-
-/*
-   Estilo dos links das redes sociais.
-*/
-.social-links a {
-
-    /*
-       Cor branca dos ícones.
-    */
-    color: white;
-
-    /*
-       Tamanho dos ícones.
-    */
-    font-size: 22px;
-
-    /*
-       Retira o sublinhado.
-    */
-    text-decoration: none;
-
-    /*
-       Animação suave.
-    */
-    transition: 0.3s;
-}
-
-
-/*
-   Efeito quando o mouse passa sobre um ícone.
-*/
-.social-links a:hover {
-
-    /*
-       O ícone aumenta ligeiramente.
-    */
-    transform: scale(1.2);
-
-    /*
-       Muda a cor.
-    */
-    color: #ffd6d6;
-}
-
-/* =================================
-   BARALHO
-   ================================= */
-
-.baralho {
+.carousel {
     width: 100%;
-    height: 400px;
-
-    /* Centraliza o conjunto das cartas */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     position: relative;
 }
 
-/* =================================
+.carousel-item img {
+    width: 100%;
+    display: block;
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+   ===================================================== */
+
+.navbar {
+    z-index: 1000;
+    padding: 20px 40px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+    color: #d62828;
+}
+
+
+
+/* =====================================================
+   BARALHO
+   ===================================================== */
+
+.baralho-section {
+    min-height: 650px;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
+.baralho {
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+
+
+/* =====================================================
    CARTAS
-   ================================= */
+   ===================================================== */
 
 .carta {
     position: absolute;
 
-    /* Aumenta o tamanho das cartas */
+    left: 50%;
+    top: 40px;
+
     width: 360px;
-    height: 480px;
+    aspect-ratio: 2 / 3;
+
+    margin-left: -180px;
 
     border-radius: 15px;
     overflow: hidden;
@@ -244,79 +96,326 @@ body {
 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 
-    cursor: pointer;
-
-    /* Mantém a carta centrada no ponto definido */
-    transform: translateX(-50%);
+    display: block;
 
     transition: transform 0.3s ease;
 }
 
-/* =================================
-   IMAGEM
-   ================================= */
-
 .carta img {
-
-    /* Ocupa toda a carta */
     width: 100%;
     height: 100%;
 
-    /* Faz a imagem preencher o espaço */
-    object-fit: cover;
+    object-fit: contain;
 
-    /* Remove espaços estranhos */
+    display: block;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* =====================================================
+   POSIÇÃO DAS CARTAS
+   ===================================================== */
+
+.carta1 {
+    --x: -220px;
+    --rotacao: -13deg;
+
+    z-index: 1;
+
+    transform:
+        translateX(var(--x))
+        rotate(var(--rotacao));
+}
+
+.carta2 {
+    --x: -80px;
+    --rotacao: -4deg;
+
+    z-index: 2;
+
+    transform:
+        translateX(var(--x))
+        rotate(var(--rotacao));
+}
+
+.carta3 {
+    --x: 80px;
+    --rotacao: 4deg;
+
+    z-index: 3;
+
+    transform:
+        translateX(var(--x))
+        rotate(var(--rotacao));
+}
+
+.carta4 {
+    --x: 220px;
+    --rotacao: 13deg;
+
+    z-index: 4;
+
+    transform:
+        translateX(var(--x))
+        rotate(var(--rotacao));
+}
+
+
+/* =====================================================
+   EFEITO AO PASSAR O RATO
+   ===================================================== */
+
+.carta1:hover {
+    transform:
+        translateX(-220px)
+        translateY(-35px)
+        rotate(-13deg);
+}
+
+.carta2:hover {
+    transform:
+        translateX(-80px)
+        translateY(-35px)
+        rotate(-4deg);
+}
+
+.carta3:hover {
+    transform:
+        translateX(80px)
+        translateY(-35px)
+        rotate(4deg);
+}
+
+.carta4:hover {
+    transform:
+        translateX(220px)
+        translateY(-35px)
+        rotate(13deg);
+}
+
+
+/* =====================================================
+   INFORMAÇÕES DOS PROJETOS
+   ===================================================== */
+
+.informacoes-projetos {
+    background-color: #000;
+}
+
+.informacao-projeto {
+    min-height: 600px;
+    padding: 100px 0;
+    color: white;
+}
+
+.informacao-projeto:nth-child(even) {
+    background-color: #111;
+}
+
+.informacao-projeto h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #d4a64a;
+}
+
+.informacao-projeto p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #ddd;
+}
+
+
+/* =================================
+   ESCOLHA DA PESSOA
+   ================================= */
+
+.escolha-pessoa {
+    position: relative;
+    background-color: #000;
+}
+
+
+/* Esconde os radio buttons originais */
+
+.escolha-pessoa input[type="radio"] {
+    display: none;
+}
+
+
+/* =================================
+   OPÇÕES 1 / 2
+   ================================= */
+
+.opcoes-pessoa {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding-top: 30px;
+}
+
+
+.opcoes-pessoa label {
+
+    color: #888;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.opcoes-pessoa span {
+
+    color: #777;
+
+    font-size: 30px;
+}
+
+
+/* Pessoa 1 selecionada */
+
+#pessoa1:checked ~ .opcoes-pessoa label[for="pessoa1"] {
+
+    color: #d4a64a;
+
+    transform: scale(1.2);
+}
+
+
+/* Pessoa 2 selecionada */
+
+#pessoa2:checked ~ .opcoes-pessoa label[for="pessoa2"] {
+
+    color: #d4a64a;
+
+    transform: scale(1.2);
+}
+
+
+
+/* =================================
+   TROCA ENTRE OS BARALHOS
+   ================================= */
+
+
+/*
+   Por padrão, mostramos o baralho preto.
+*/
+
+#baralho-vermelho {
+    display: none;
+}
+
+
+/*
+   Quando a pessoa 2 for selecionada,
+   escondemos o baralho preto.
+*/
+
+#pessoa2:checked ~ .baralhos #baralho-preto {
+
+    display: none;
+}
+
+
+/*
+   E mostramos o baralho vermelho.
+*/
+
+#pessoa2:checked ~ .baralhos #baralho-vermelho {
+
+    display: block;
+}
+
+/* =================================
+   TROCA ENTRE AS DUAS PESSOAS
+   ================================= */
+
+
+/*
+   Por padrão, a pessoa 1 está selecionada.
+   Portanto, mostramos as cartas pretas
+   e escondemos as vermelhas.
+*/
+
+#baralho-vermelho,
+#informacoes-vermelho {
+    display: none;
+}
+
+
+/*
+   Quando a pessoa 2 estiver selecionada,
+   escondemos o conteúdo da pessoa 1.
+*/
+
+#pessoa2:checked ~ .baralhos #baralho-preto {
+    display: none;
+}
+
+
+/*
+   Mostramos o baralho da pessoa 2.
+*/
+
+#pessoa2:checked ~ .baralhos #baralho-vermelho {
     display: block;
 }
 
 
 /* =================================
-   POSIÇÃO DAS CARTAS
+   INFORMAÇÕES
    ================================= */
 
-.carta1 {
-    left: calc(50% - 540px);
-    top: 20px;
-    z-index: 1;
-}
-
-.carta2 {
-    left: calc(50% - 180px);
-    top: 20px;
-    z-index: 2;
-}
-
-.carta3 {
-    left: calc(50% + 180px);
-    top: 20px;
-    z-index: 3;
-}
-
-.carta4 {
-    left: calc(50% + 540px);
-    top: 20px;
-    z-index: 4;
-}
-
-/* =================================
-   EFEITO AO PASSAR O RATO
-   ================================= */
 
 /*
-   Quando o rato estiver sobre uma carta,
-   ela sobe 30 pixels.
+   Inicialmente escondemos as informações
+   da pessoa 2.
 */
-.carta:hover {
-    /*
-       Mantém a carta centrada
-       e faz ela subir 30px.
-    */
-    transform: translateX(-50%) translateY(-30px);
 
-    /*
-       Coloca a carta selecionada
-       por cima das outras.
-    */
-    z-index: 10;
+#informacoes-vermelho {
+    display: none;
+}
 
+
+/*
+   Quando a pessoa 2 estiver selecionada,
+   escondemos as informações da pessoa 1.
+*/
+
+#pessoa2:checked ~ .informacoes-projetos #informacoes-preto {
+    display: none;
+}
+
+
+/*
+   E mostramos as informações da pessoa 2.
+*/
+
+#pessoa2:checked ~ .informacoes-projetos #informacoes-vermelho {
+    display: block;
+}
+
+
+
+
+/* =====================================================
+   RODAPÉ
+   ===================================================== */
+
+footer {
+    background-color: #070503;
+    color: white;
 }
