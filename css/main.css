@@ -1,0 +1,322 @@
+body {
+    font-family: 'Kalam', cursive;
+}
+
+
+/* =====================================================
+   CONFIGURAÇÕES GERAIS
+   ===================================================== */
+
+/*
+   Remove as margens e espaçamentos padrão
+   que o navegador coloca nos elementos.
+*/
+* {
+    margin: 0;
+    padding: 0;
+
+    /*
+       Faz com que padding e border não aumentem
+       o tamanho final dos elementos.
+    */
+    box-sizing: border-box;
+}
+
+/*
+   Estilo geral da página.
+*/
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/* =====================================================
+   BARRA DE NAVEGAÇÃO
+   ===================================================== */
+
+.navbar {
+
+    /*
+       Coloca os elementos lado a lado.
+    */
+    display: flex;
+
+    /*
+       Alinha os elementos verticalmente.
+    */
+    align-items: center;
+
+    /*
+       Espaça automaticamente:
+       logo | links | redes sociais
+    */
+    justify-content: space-between;
+
+    /*
+       Espaçamento interno da barra.
+    */
+    padding: 15px 40px;
+
+    /*
+       Cor vermelha da barra.
+    */
+    background-color: #d62828;
+}
+
+
+/* =====================================================
+   LOGO / NOME
+   ===================================================== */
+
+.logo {
+
+    /*
+       Tamanho do texto.
+    */
+    font-size: 24px;
+
+    /*
+       Texto em negrito.
+    */
+    font-weight: bold;
+
+    /*
+       Cor branca.
+    */
+    color: white;
+}
+
+
+/* =====================================================
+   LINKS DO MENU
+   ===================================================== */
+
+.nav-links {
+
+    /*
+       Remove as bolinhas da lista.
+    */
+    list-style: none;
+
+    /*
+       Coloca os links lado a lado.
+    */
+    display: flex;
+
+    /*
+       Espaço entre os links.
+    */
+    gap: 30px;
+}
+
+
+/*
+   Estilo dos links.
+*/
+.nav-links a {
+
+    /*
+       Remove o sublinhado.
+    */
+    text-decoration: none;
+
+    /*
+       Texto branco.
+    */
+    color: white;
+
+    /*
+       Tamanho do texto.
+    */
+    font-size: 16px;
+
+    /*
+       Pequena animação quando o mouse passa.
+    */
+    transition: 0.3s;
+}
+
+
+/*
+   Quando o mouse passa por cima do link.
+*/
+.nav-links a:hover {
+
+    /*
+       Torna o texto um pouco mais claro.
+    */
+    color: #ffd6d6;
+}
+
+
+/* =====================================================
+   REDES SOCIAIS
+   ===================================================== */
+
+.social-links {
+
+    /*
+       Coloca os ícones lado a lado.
+    */
+    display: flex;
+
+    /*
+       Espaço entre os ícones.
+    */
+    gap: 15px;
+}
+
+
+/*
+   Estilo dos links das redes sociais.
+*/
+.social-links a {
+
+    /*
+       Cor branca dos ícones.
+    */
+    color: white;
+
+    /*
+       Tamanho dos ícones.
+    */
+    font-size: 22px;
+
+    /*
+       Retira o sublinhado.
+    */
+    text-decoration: none;
+
+    /*
+       Animação suave.
+    */
+    transition: 0.3s;
+}
+
+
+/*
+   Efeito quando o mouse passa sobre um ícone.
+*/
+.social-links a:hover {
+
+    /*
+       O ícone aumenta ligeiramente.
+    */
+    transform: scale(1.2);
+
+    /*
+       Muda a cor.
+    */
+    color: #ffd6d6;
+}
+
+/* =================================
+   BARALHO
+   ================================= */
+
+.baralho {
+    width: 100%;
+    height: 400px;
+
+    /* Centraliza o conjunto das cartas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+/* =================================
+   CARTAS
+   ================================= */
+
+.carta {
+    position: absolute;
+
+    /* Aumenta o tamanho das cartas */
+    width: 360px;
+    height: 480px;
+
+    border-radius: 15px;
+    overflow: hidden;
+
+    border: 3px solid white;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+
+    /* Mantém a carta centrada no ponto definido */
+    transform: translateX(-50%);
+
+    transition: transform 0.3s ease;
+}
+
+/* =================================
+   IMAGEM
+   ================================= */
+
+.carta img {
+
+    /* Ocupa toda a carta */
+    width: 100%;
+    height: 100%;
+
+    /* Faz a imagem preencher o espaço */
+    object-fit: cover;
+
+    /* Remove espaços estranhos */
+    display: block;
+}
+
+
+/* =================================
+   POSIÇÃO DAS CARTAS
+   ================================= */
+
+.carta1 {
+    left: calc(50% - 540px);
+    top: 20px;
+    z-index: 1;
+}
+
+.carta2 {
+    left: calc(50% - 180px);
+    top: 20px;
+    z-index: 2;
+}
+
+.carta3 {
+    left: calc(50% + 180px);
+    top: 20px;
+    z-index: 3;
+}
+
+.carta4 {
+    left: calc(50% + 540px);
+    top: 20px;
+    z-index: 4;
+}
+
+/* =================================
+   EFEITO AO PASSAR O RATO
+   ================================= */
+
+/*
+   Quando o rato estiver sobre uma carta,
+   ela sobe 30 pixels.
+*/
+.carta:hover {
+    /*
+       Mantém a carta centrada
+       e faz ela subir 30px.
+    */
+    transform: translateX(-50%) translateY(-30px);
+
+    /*
+       Coloca a carta selecionada
+       por cima das outras.
+    */
+    z-index: 10;
+
+}
